@@ -15,17 +15,14 @@ import java.util.List;
 public class PrinterPage {
     private WebDriver driver;
     private WebDriverWait wait;
-    JavascriptExecutor jse;
 
     public PrinterPage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver,5);
-        this.jse = jse;
-    }//label[@data-marker='delivery-filter']
-    //span[@data-marker='delivery-filter/text']
+    }
     @FindBy (xpath = "//div[@data-marker='fieldset/d']")
     private WebElement deliveryCheckbox;
-    //input[@data-marker='delivery-filter/input']
+
     @FindBy (xpath = "//button[@data-marker='search-filters/submit-button']")
     private WebElement searchButton;
 
@@ -34,17 +31,13 @@ public class PrinterPage {
 
 
 
-    public PrinterPage checkboxAndSearch() throws InterruptedException {
-        if (!deliveryCheckbox.isSelected()) {
-            Thread.sleep(3000);
-//            Actions actions = new Actions(driver);
-//            actions.moveToElement(deliveryCheckbox).click().build().perform();
-            deliveryCheckbox.click();
-        }
-
-        searchButton.click();
-        Select select = new Select(searchOptions);
-        select.selectByValue("2");
+    public PrinterPage checkboxAndSearch() {
+            if (!deliveryCheckbox.isSelected()) {
+                deliveryCheckbox.click();
+            }
+            searchButton.click();
+            Select select = new Select(searchOptions);
+            select.selectByValue("2");
         return this;
     }
 
