@@ -1,10 +1,8 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -28,8 +26,6 @@ public class PrinterPage {
 
     @FindBy (xpath = "//div[@class='index-topPanel-1F0TP']//select[@class='select-select-3CHiM']")
     private WebElement searchOptions;
-
-
 
     public PrinterPage checkboxAndSearch() {
             if (!deliveryCheckbox.isSelected()) {
