@@ -40,22 +40,33 @@ public class MainPage {
         return this;
     }
 
+    public void goTo() {
+        driver.get("https://www.avito.ru/");
+    }
+
     public MainPage sendText(String text) {
         textField.sendKeys(text);
         return this;
     }
 
+    public void cityField() {
+        cityField.click();
+    }
+
     public MainPage chooseCity(String text) {
         try {
-            cityField.click();
             city.sendKeys(text);
             Thread.sleep(2000);
             newCity.click();
-            button.click();
+
 
         } catch (Exception e) {
             e.printStackTrace();
         } return this;
+    }
+
+    public void buttonClick() {
+        button.click();
     }
 }
 

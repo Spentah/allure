@@ -1,8 +1,7 @@
 package hooks;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -31,15 +30,6 @@ public class Hooks {
         driver.quit();
     }
 
-    @Test
-    public void test() {
-        driver.get("https://www.avito.ru/");
-        main.selectCategory()
-            .sendText("Принтер")
-            .chooseCity("Владивосток");
-        printer.checkboxAndSearch()
-                .takeExpensivePrinter();
 
-    }
 
 }
