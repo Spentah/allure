@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import stepdefs.SortBy;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class PrinterPage {
         this.driver = driver;
         wait = new WebDriverWait(driver,5);
     }
-    @FindBy (xpath = "//input[@name='withImagesOnly']")
+    @FindBy (xpath = "//input[@name='withImagesOnly']/..//span")
     private WebElement deliveryCheckbox;
 
     @FindBy (xpath = "//button[@data-marker='search-filters/submit-button']")
@@ -37,13 +38,12 @@ public class PrinterPage {
                 deliveryCheckbox.click();
             }
             searchButton.click();
-
         return this;
     }
 
-    public void sortBy(int value) {
+    public void sortBy(SortBy by) {
         Select select = new Select(searchOptions);
-        select.selectByValue(value + "");
+        select.selectByValue(by.value + "");
     }
 
     public PrinterPage takeExpensivePrinter(int number) {
@@ -56,8 +56,13 @@ public class PrinterPage {
     }
 
     public void checkPageTitle(String text) {
-        if (!(pageTitle.getAttribute("innerText").equals("Объявления по запросу «" + text + "» в Владивостоке"))) {
-            Assert.fail("Название страницы не соответствует");
+//        String actual = pageTitle.getAttribute("outerText");
+        String actual = pageTitle.getText();
+        String expected = "Объявления по запросу «" + text + "» в Владивостоке";
+        if (!(actual.equalsIgnoreCase(expected))) {
+            System.out.println(actual);
+            System.out.println(expected);
+            Assert.fail("Название страницы не соответствует ожидаемому");
         }
     }
 
