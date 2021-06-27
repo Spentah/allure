@@ -2,11 +2,7 @@ package hooks;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.PageFactory;
-import pages.MainPage;
-import pages.PrinterPage;
 import stepdefs.MyStepdefs;
 
 import java.util.concurrent.TimeUnit;
