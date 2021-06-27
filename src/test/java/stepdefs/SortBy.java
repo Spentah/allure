@@ -13,10 +13,4 @@ public enum SortBy {
         this.value = value;
         this.text = text;
     }
-
-    public void oi(SortBy by){
-        String s1 = by.text;
-    }
-
-
 }

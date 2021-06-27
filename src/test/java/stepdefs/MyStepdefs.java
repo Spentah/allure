@@ -12,6 +12,10 @@ import org.openqa.selenium.support.PageFactory;
 import pages.MainPage;
 import pages.PrinterPage;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class MyStepdefs{
     public static WebDriver driver;
     public MainPage main = PageFactory.initElements(driver, MainPage.class);
@@ -22,9 +26,9 @@ public class MyStepdefs{
         main.goTo();
     }
 
-    @И("в выпадающем списке категорий выбрана оргтехника")
-    public void вВыпадающемСпискеКатегорийВыбранаОргтехника() {
-        main.selectCategory();
+    @И("в выпадающем списке категорий выбрана {category}")
+    public void вВыпадающемСпискеКатегорийВыбранаОргтехника(Category category) {
+        main.selectCategory(category);
     }
 
     @И("в поле поиска введено значение {string}")
@@ -88,5 +92,16 @@ public class MyStepdefs{
         } return by;
     }
 
+    @ParameterType(".*")
+    public Category category(String text) {
+        Category result = null;
+        Category[] categories = {Category.AUTO, Category.BIKE, Category.APARTMENTS,
+                Category.PLANTS, Category.OFFICE_EQUIPMENT, Category.FURNITURE, Category.FOOD_PRODUCTS};
+        for (Category category : categories) {
+            if (category.text.equalsIgnoreCase(text)) {
+                result = category;
+            }
+        } return result;
+    }
 
 }

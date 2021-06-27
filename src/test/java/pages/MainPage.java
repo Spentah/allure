@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
+import stepdefs.Category;
 
 import java.util.concurrent.TimeUnit;
 
@@ -34,10 +35,10 @@ public class MainPage {
     @FindBy (xpath = "//button[@data-marker='popup-location/save-button']")
     private WebElement button;
 
-    public MainPage selectCategory() {
+    public void selectCategory(Category category) {
         Select select = new Select(categorySelect);
-        select.selectByValue("99");
-        return this;
+        select.selectByValue(category.value + "");
+
     }
 
     public void goTo() {
